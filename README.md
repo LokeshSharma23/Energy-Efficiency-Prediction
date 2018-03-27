@@ -1,50 +1,53 @@
-# Energy-Efficiency-Prediction
+# Data Science Internship - Interview Task
 
-Introduction
-The aim of the report is to study and analyze the Energy Efficiency Dataset. I have
-performed multiple linear regression on this dataset using response variable called Heating Load. Along with this variable, 
-I also performed an analysis on other variables in the dataset and studied the significance of these variables to build the 
-linear regression model. I build the model using following two criterions: Ordinary Least squares and Backward Step wise selection method
-using Akaike Information Criterion(AIC) values to represent the data linearly.
+## Introduction
+Thank you for your interest in Arthena! We were impressed by your application and are happy to consider you for a data science internship. 
 
-Data Set Information
-The dataset is imported from UCI Machine Learning Repository. Energy analysis is performed using 12 different building shapes simulated in Ecotect. The buildings differ with respect to the
-glazing area, the glazing area distribution, and the orientation, amongst other parameters. The dataset comprises 768 samples and 8 features,
-aiming to predict two real valued responses.
+We want to get a better sense of how you approach data science problems. Please complete the following task and share your code with us. 
 
-Features are as follows:
-1. Relative Compactness 2. Surface Area 3. Wall Area 4. Roof Area 5. Overall Height
-6. Orientation 7. Glazing Area 8. Glazing Area Distribution 9. Heating Load 10. Cooling Load
-From the above variables, we are considering Heating Load and Cooling Load as response variables.
+We will review your approach and, if we believe there is a good fit, will reach out to schedule a follow-up call. We aim to respond within seven days and often much sooner.
 
-Exploratory Data Analysis
-As a first step, I calculated the correlation between these two response variables and other variables and, also studied the 
-correlation among all the variables.
+Applicants usually spend ~2 hours tackling these tasks. This is not designed to be completed in two hours. Again, **you are not expected to finish everything**. We expect you to complete the primary task and write answers to a couple of the open-ended questions. 
 
-The correlation between two response variables (Heating Load and Cooling Load) was very high (i.e. 0.975).
-Hence by studying one of the response variables, we can predict the value of other response variable.
+## Software Engineering Practices
 
-Model Building with Multiple Linear Regression
-Linear Regression was performed with the response variable as Heating Load and the rest of the
-variables as predictors.
+Follow these software engineering practices:
+- Comment appropriately. 
+- Commit frequently.
+- Only push functional code. 
+- Follow a style guide.
+- Use a seeded number generator where possible. All functions should be deterministic; I should run your code and get exactly the same results you do.
+- Use pipenv (or pipreqs and virtualenv) to create and maintain a virtual environment and requirements list.
+- Create a .gitignore (github maintains a Python gitignore [here](https://github.com/github/gitignore/blob/master/Python.gitignore)).
 
-# Building the full model using lm() fuction
-m1= lm(heating.load~relative.compactness+surface.area+wall.area+roof.area+
-overall.height+factor(orientation)+
-factor(glazing.area)+factor(glazing.area.distribution),data)
-summary(m1)
-The summary of full model shows that Roof Area does not have any relationship with the
-response variable. It does not predict the value of response variable. The p-value of Orientation and Glazing Area Distribution
-is also not significant. All other attributes have a significant p-value. Also, the R-squared value is very high. It is 91.62% which
-implies that it fits the model data. To confirm my initial finding from the full model, I performed Stepwise Linear Regression.
+## Instructions
 
-Stepwise Regression
-I have performed stepwise regression in the backward direction using step() function in R which is based on 
-Akaike Information Criterion (AIC).
-During each step the attribute with the highest AIC value is removed. The AIC of the model increases when the attribute with the
-lowest p-value is removed.
+Do all of your work in a Python 3 Jupyter Notebook. Use whatever libraries you want. Follow the aforementioned software engineering practices. Your final deliverable is a "model.py" file that contains an importable "predict" function (see Step 4). 
 
-Conclusion
-Heating Load and Cooling Load depend on same variables because of high correlation. The variables
-that plays an important part in predicting their values are Relative Compactness, Surface Area, Wall Area, 
-Overall Height, and Glazing Area.
+1. Create a private git repository. Upload the unzipped interview task files and create all of your files in this repository. 
+2. Explore the data ("data.csv"). You have auction results for works by 119 different artists. We randomly withheld a portion of auction results by those artists that we will use to test your model. Our test set will contain the same variables but may contain missing values. **The text is encoded in Latin-1 and must be opened using a line like `df = pd.read_csv("data.csv", encoding="latin-1")`**.
+3. Prepare and analyze the data. Your primary task is to train a machine learning model that predicts the price of a work of art given its 19 variables. Your target variable is `hammer_price`. Use the root mean squared error as your metric. 
+4. Refactor your code into the final deliverable: a file called "model.py" that contains an importable Python function called "predict" that takes in a test CSV file (with the same variables as the data.csv file and an arbitrary number of rows), predicts the price of each row, and returns the RMSE of the predictions. Our test file may contain missing values. Document your solution.
+5. Answer a couple of the following questions in a Markdown cell of the Jupyter notebook. Write a couple of sentences per question.
+- Which features are most important for your model? Are there any that surprised to you? 
+- How would you quantify the uncertainty and/or confidence intervals in the predictions? 
+- How would you predict the price of a work if you were only given the artist name, type of work, and size?
+- What happened to works by Sol Lewitt before, during and after the 2007-2008 financial crisis. How quickly did prices return to pre-2008 levels?  
+- What additional data or features do you think would help increase performance?
+- How would you determine the relationship between the size of works and their price?
+- How would you make sure the works you're purchasing have uncorrelated returns (so that you can maintain a diverse portfolio)?
+- What category of work do you recommend purchasing? 
+
+We designed the task to be completed without additional instructions, but if you spot a mistake or have any questions, please don't hesitate to let us know. 
+
+## Evaluation
+
+We want to learn more about how you use machine learning, statistics, and software engineering to solve problems. We're looking for a demonstration of your ability to understand the problem and understand, prepare, and analyze the data. We care more about how you approach the problem and how you communicate that approach than about how good your numbers are. This is a particularly traditional machine learning task; most of our problems are often much more open-ended and require careful thought to solve. 
+
+We're also looking to evaluate how comfortable you are with software engineering tools and practices like style guides, version control, and commenting. It's okay if you're not used to churning out production code, but you will be working in a team and on a product where mistakes can translate into millions of dollars of losses. We care about the long-term maintanability and extensibility of our code and are happy to help you learn software engineering best practices.
+
+## Authors
+* Michael D'Angelo (michael@arthena.com)
+* Paul Warren (paul@arthena.com)
+
+
